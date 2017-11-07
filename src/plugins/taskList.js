@@ -1,14 +1,25 @@
+function generateTime() {
+  const timeNow = new Date();
+  const hours = timeNow.getHours();
+  const minutes = timeNow.getMinutes();
+  const seconds = timeNow.getSeconds();
+  let timeString = '' + hours;
+  timeString += (minutes < 10 ? ':0' : ':') + minutes;
+  timeString += (seconds < 10 ? ':0' : ':') + seconds;
+  return timeString
+}
+
 const selfIntroduction = [
   // { type: 'prompt', message: 'cd xu\'sresume' },
     { message: 'Thanks for your visiting, here is my resume, let me introduce myself first.' },
-    { time: new Date().toLocaleTimeString(), type: 'info', label: 'Name:', message: 'Elder J ' },
-    { time: new Date().toLocaleTimeString(), type: 'info', label: 'Apply For:', message: 'Professor' },
-    { time: new Date().toLocaleTimeString(), type: 'info', label: 'School:', message: 'National Central University & Shanghai Jiao Tong University' },
-    { time: new Date().toLocaleTimeString(), type: 'info', label: 'Diploma:', message: 'Graduate' },
-    { time: new Date().toLocaleTimeString(), type: 'info', label: 'Major:', message: 'Electrical Engineering' },
-    { time: new Date().toLocaleTimeString(), type: 'info', label: 'Age:', message: '91' },
-    { time: new Date().toLocaleTimeString(), type: 'info', label: 'Sex:', message: 'Male' },
-  { time: new Date().toLocaleTimeString(),
+    { time: generateTime(), type: 'info', label: 'Name:', message: 'Elder J ' },
+    { time: generateTime(), type: 'info', label: 'Apply For:', message: 'Professor' },
+    { time: generateTime(), type: 'info', label: 'School:', message: 'National Central University & Shanghai Jiao Tong University' },
+    { time: generateTime(), type: 'info', label: 'Diploma:', message: 'Graduate' },
+    { time: generateTime(), type: 'info', label: 'Major:', message: 'Electrical Engineering' },
+    { time: generateTime(), type: 'info', label: 'Age:', message: '91' },
+    { time: generateTime(), type: 'info', label: 'Sex:', message: 'Male' },
+  { time: generateTime(),
     type: 'info', label: 'Experence:',
     message: {
       text: 'Here is my work experence:',
@@ -44,7 +55,7 @@ export default {
       const p = new Promise((resolve, reject) => {
         let url = input.split(' ')[1]
         if (!url) {
-          reject({ type: 'error', message: 'a url is required!' })
+          reject({ type: 'error', label: 'Error', message: 'a url is required!' })
           return
         }
         pushToList({ type: 'success', label: 'Success', message: 'Page Opening' })

@@ -107,7 +107,7 @@
           this.handleRun(this.inputCommand.split(' ')[0], this.inputCommand)
         } else {
           this.pushToList({ type: 'System', message: 'Unknown Command.' })
-          this.pushToList({ type: 'System', message: 'type "help to get a supporting command list.' })
+          this.pushToList({ type: 'System', message: 'type "help" to get a supporting command list.' })
         }
         this.inputCommand = ''
         this.autoScroll()
@@ -115,15 +115,10 @@
       handleRun(taskName, input) {
         this.lastLineContent = '...'
         return taskList[taskName][taskName](this.pushToList, input).then(done => {
-          if (done.type === 'success') {
-            this.pushToList(done)
-            this.lastLineContent = '&nbsp'
-          } else {
-            this.pushToList({ type: 'Error', message: `${taskName}: ${done.message}` })
-            this.lastLineContent = '&nbsp'
-          }
+          this.pushToList(done)
+          this.lastLineContent = '&nbsp'
         }).catch(error => {
-          this.pushToList({ type: 'Error', message: `${taskName}: ${error.message}` })
+          this.pushToList(error || { type: 'error', label: 'Error', message: 'Something went wrong!' })
           this.lastLineContent = '&nbsp'
         })
       },
@@ -134,8 +129,6 @@
       printHelp(input) {
         if (!input) {
           this.pushToList({ message: 'Here is a list of supporting command.' })
-          console.log(this.supportingCommandList)
-          console.log(commandList)
           this.supportingCommandList.map(command => {
             if (commandList[command]) {
               this.pushToList({ type: 'success', label: command, message: '---> ' + commandList[command].description })
@@ -163,7 +156,7 @@
   };
 
 </script>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped lang="scss">
 .terminal {
   position: relative;
