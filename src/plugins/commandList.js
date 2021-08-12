@@ -1,6 +1,6 @@
 const commandList = {
   experence: {
-    description: 'Description of my work experence.',
+    description: 'Description of my work experience.',
     messages: [
       { type: 'info', label: 'Shanghai HaiNing Foreign firm', message: '1947-1951 work as Power Supply Engineer and Associate Engineer' },
       { type: 'error', label: 'Changchun First Automobile Works', message: '1956-1959 work as Deputy Director and Factory director ' },
