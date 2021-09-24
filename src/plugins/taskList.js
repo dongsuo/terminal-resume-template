@@ -20,9 +20,9 @@ const selfIntroduction = [
     { time: generateTime(), type: 'info', label: 'Age:', message: '91' },
     { time: generateTime(), type: 'info', label: 'Sex:', message: 'Male' },
   { time: generateTime(),
-    type: 'info', label: 'Experence:',
+    type: 'info', label: 'Experience:',
     message: {
-      text: 'Here is my work experence:',
+      text: 'Here is my work experience:',
       list: [
         '1947-1951 work as Power Supply Engineer and Associate Engineer in Shanghai HaiNing Foreign firm;',
         '1956-1959 work as Deputy Director and Factory director in Changchun First Automobile Works.'
